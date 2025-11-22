@@ -1,35 +1,32 @@
 # Week 2: Classical Machine Learning
 
-A comprehensive curriculum covering fundamental machine learning algorithms, starting with Linear Regression.
+A comprehensive curriculum covering fundamental machine learning algorithms with hands-on implementations from scratch and using scikit-learn.
 
 ## Overview
 
 This week introduces classical machine learning concepts and algorithms:
 
-| Day | Topic | Assignment |
-|-----|-------|------------|
-| 8 | Linear Regression | House price prediction - manual vs sklearn |
-| 9 | Logistic Regression | Binary classification tasks |
-| 10 | Decision Trees | Tree-based classification and regression |
-| 11 | Random Forests | Ensemble methods |
-| 12 | Support Vector Machines | SVM classification |
-| 13 | Model Evaluation | Cross-validation, metrics, tuning |
-| 14 | Week 2 Project | Complete ML pipeline |
+| Day | Topic | Key Concepts | Assignment |
+|-----|-------|--------------|------------|
+| 8 | Linear Regression | y=mx+b, Cost function, Gradient descent | House price prediction |
+| 9 | Logistic Regression | Sigmoid, Binary classification, ROC/AUC | Spam email classifier (>85% acc) |
+| 10 | Decision Trees | Gini impurity, Information gain, Pruning | Loan approval prediction |
+| 11 | Random Forests | Bagging, Boosting, Feature importance | Improve Day 10 model |
 
 ## Directory Structure
 
 ```
 week2_classical_ml/
 ├── day08_linear_regression/
-│   └── day08_linear_regression.ipynb     # Linear regression from scratch and sklearn
-├── day09_logistic_regression/            # (Coming soon)
-├── day10_decision_trees/                 # (Coming soon)
-├── day11_random_forests/                 # (Coming soon)
-├── day12_svm/                           # (Coming soon)
-├── day13_model_evaluation/              # (Coming soon)
-├── day14_week2_project/                 # (Coming soon)
-├── requirements.txt                      # Python dependencies
-└── README.md                            # This file
+│   └── linear_regression.py      # Linear regression from scratch + sklearn
+├── day09_logistic_regression/
+│   └── logistic_regression.py    # Logistic regression + spam classifier
+├── day10_decision_trees/
+│   └── decision_trees.py         # Decision trees + loan approval
+├── day11_random_forests/
+│   └── random_forests.py         # Ensemble methods + improved model
+├── requirements.txt
+└── README.md
 ```
 
 ## Quick Start
@@ -49,66 +46,27 @@ venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 ```
 
-### 2. Run Notebooks
+### 2. Run Scripts
 
 ```bash
-# Start Jupyter
-jupyter notebook
-
-# Or use JupyterLab
-jupyter lab
+python day08_linear_regression/linear_regression.py
+python day09_logistic_regression/logistic_regression.py
+python day10_decision_trees/decision_trees.py
+python day11_random_forests/random_forests.py
 ```
 
-## Day 8: Linear Regression (Available Now)
+## Day 8: Linear Regression
 
 ### Topics Covered
+- **Mathematical foundations**: y = mx + b (simple), y = Xw (matrix form)
+- **Cost function**: Mean Squared Error (MSE)
+- **Optimization**: Gradient descent and Normal equation
+- **Evaluation metrics**: MSE, RMSE, MAE, R² score
 
-1. **Introduction to Linear Regression**
-   - What is linear regression?
-   - Simple vs multiple linear regression
-   - Use cases and applications
-
-2. **Mathematical Foundations**
-   - The equation: y = mx + b
-   - Matrix notation for multiple features
-   - Ordinary Least Squares (OLS) solution
-   - Normal equation
-
-3. **Cost Function and Optimization**
-   - Mean Squared Error (MSE)
-   - Why MSE is used
-   - Cost function surface visualization
-
-4. **Gradient Descent**
-   - Algorithm explanation
-   - Update rules
-   - Learning rate effects
-   - Convergence visualization
-
-5. **Implementation from Scratch**
-   - Custom LinearRegression class
-   - OLS solution implementation
-   - Gradient descent implementation
-   - Comparison of methods
-
-6. **Scikit-learn Implementation**
-   - LinearRegression class
-   - fit(), predict(), score() methods
-   - Comparison with manual implementation
-
-7. **Model Evaluation Metrics**
-   - Mean Squared Error (MSE)
-   - Root Mean Squared Error (RMSE)
-   - Mean Absolute Error (MAE)
-   - R-squared (R²) score
-   - Manual implementation of all metrics
-
-8. **House Price Prediction Assignment**
-   - Real-world dataset creation
-   - Feature analysis and EDA
-   - Model building (manual vs sklearn)
-   - Cross-validation
-   - Residual analysis
+### Key Implementations
+- `LinearRegressionScratch` class with gradient descent and normal equation
+- Comparison with scikit-learn's `LinearRegression`
+- House price prediction using California Housing dataset
 
 ### Key Code Examples
 
@@ -136,85 +94,80 @@ from sklearn.linear_model import LinearRegression
 model = LinearRegression()
 model.fit(X_train, y_train)
 predictions = model.predict(X_test)
-
-# Evaluation
-from sklearn.metrics import mean_squared_error, r2_score
-rmse = np.sqrt(mean_squared_error(y_test, predictions))
-r2 = r2_score(y_test, predictions)
 ```
 
-### Assignment: House Price Prediction
+## Day 9: Logistic Regression
 
-Build a house price prediction model using:
-1. Manual implementation (gradient descent)
-2. Scikit-learn implementation
+### Topics Covered
+- **Sigmoid function**: σ(z) = 1 / (1 + e^(-z))
+- **Binary cross-entropy loss**: Log loss for classification
+- **Decision boundary**: Where P(y=1|x) = 0.5
+- **Evaluation**: Confusion matrix, Precision, Recall, F1, ROC/AUC
 
-Compare:
-- Training and test performance
-- Coefficient values
-- Convergence behavior
-- Residual analysis
+### Key Implementations
+- `LogisticRegressionScratch` class with gradient descent
+- TF-IDF feature extraction for text classification
+- Spam email classifier achieving >85% accuracy
 
-## Learning Outcomes
+## Day 10: Decision Trees
 
-By completing Day 8, you will:
+### Topics Covered
+- **Splitting criteria**: Gini impurity, Information gain (Entropy)
+- **Tree construction**: Recursive splitting algorithm
+- **Pruning**: Pre-pruning (max_depth, min_samples) and post-pruning (ccp_alpha)
+- **Overfitting**: Understanding and preventing
 
-1. **Understand Linear Regression Math**
-   - Derive the OLS solution
-   - Understand gradient descent optimization
-   - Interpret model coefficients
+### Key Implementations
+- `DecisionTreeScratch` class with Gini/Entropy
+- Tree visualization and decision boundary plots
+- Loan approval prediction system
 
-2. **Implement Algorithms from Scratch**
-   - Build a complete linear regression class
-   - Implement cost functions
-   - Debug gradient descent convergence
+## Day 11: Random Forests & Ensemble Methods
 
-3. **Use Scikit-learn Effectively**
-   - Understand the API design
-   - Compare with manual implementation
-   - Use cross-validation
+### Topics Covered
+- **Bagging**: Bootstrap aggregating to reduce variance
+- **Random Forest**: Bagging + random feature selection
+- **Boosting**: AdaBoost, Gradient Boosting
+- **Feature importance**: Analyzing which features matter most
 
-4. **Evaluate Regression Models**
-   - Calculate and interpret metrics
-   - Analyze residuals
-   - Identify model issues
+### Key Implementations
+- `RandomForestScratch` class
+- Comparison: Decision Tree vs Random Forest vs Gradient Boosting
+- Improved loan approval model with ensemble methods
 
-5. **Build Practical Applications**
-   - Work with real-world features
-   - Handle data preprocessing
-   - Create production-ready models
+## Key Takeaways
 
-## Tips for Success
+### Linear Regression (Day 8)
+1. Linear regression minimizes MSE to find the best-fit line
+2. Gradient descent iteratively updates weights
+3. Normal equation provides closed-form solution
+4. Feature scaling is crucial for gradient descent
 
-1. **Understand the math first** before looking at code
-2. **Visualize** cost functions and gradients
-3. **Experiment** with learning rates
-4. **Compare** manual and sklearn implementations
-5. **Analyze residuals** to check model assumptions
-6. **Use cross-validation** for robust evaluation
+### Logistic Regression (Day 9)
+1. Sigmoid function outputs probabilities (0, 1)
+2. Log loss is convex, unlike MSE for classification
+3. Precision/Recall trade-off depends on application
+4. ROC AUC measures discriminative ability
 
-## Prerequisites
+### Decision Trees (Day 10)
+1. Trees split using Gini impurity or Information Gain
+2. Deeper trees overfit - use pruning!
+3. Trees create axis-parallel decision boundaries
+4. Easy to interpret and visualize
 
-Before starting Week 2, ensure you understand:
-- Python programming fundamentals
-- NumPy array operations
-- Pandas DataFrame manipulation
-- Basic statistics (mean, variance, correlation)
-- Feature engineering concepts (Week 1)
+### Random Forests (Day 11)
+1. Bagging reduces variance through averaging
+2. Random Forest decorrelates trees
+3. More trees improve stability (diminishing returns)
+4. Ensemble methods provide more robust predictions
 
-## Resources
+## Output Visualizations
 
-### Documentation
-- [Scikit-learn Linear Models](https://scikit-learn.org/stable/modules/linear_model.html)
-- [NumPy Linear Algebra](https://numpy.org/doc/stable/reference/routines.linalg.html)
-
-### Books
-- "Introduction to Statistical Learning" - James et al.
-- "Hands-On Machine Learning" - Aurelien Geron
-
-### Videos
-- [3Blue1Brown - Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
-- [StatQuest - Linear Regression](https://www.youtube.com/watch?v=7ArmBVF2dCs)
+Each script generates visualization plots saved in respective directories:
+- `simple_linear_regression.png`, `house_price_prediction.png`
+- `sigmoid_function.png`, `decision_boundary.png`, `spam_classifier.png`
+- `splitting_criteria.png`, `decision_boundaries.png`, `loan_tree_visualization.png`
+- `ensemble_comparison.png`, `n_estimators_effect.png`, `loan_improvement.png`
 
 ## Troubleshooting
 
@@ -250,23 +203,33 @@ plt.xlabel('Predicted')
 plt.ylabel('Residual')
 ```
 
-### Memory Issues
+## Resources
 
-```python
-# For large datasets
-# Use SGD instead of batch gradient descent
-from sklearn.linear_model import SGDRegressor
-model = SGDRegressor(max_iter=1000, tol=1e-3)
+### Documentation
+- [Scikit-learn Linear Models](https://scikit-learn.org/stable/modules/linear_model.html)
+- [NumPy Linear Algebra](https://numpy.org/doc/stable/reference/routines.linalg.html)
+
+### Books
+- "Introduction to Statistical Learning" - James et al.
+- "Hands-On Machine Learning" - Aurelien Geron
+
+### Videos
+- [3Blue1Brown - Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
+- [StatQuest - Linear Regression](https://www.youtube.com/watch?v=7ArmBVF2dCs)
+
+## Requirements
+
+```bash
+pip install -r requirements.txt
 ```
 
 ## Next Steps
 
-After completing this notebook:
+After completing Week 2, proceed to:
+- **Week 3**: Deep Learning (Neural Networks, CNNs, RNNs)
+- **Week 4**: Advanced ML (NLP, Transformers, Deployment)
+
+Or explore further:
 1. Try different datasets (Boston Housing, California Housing)
 2. Implement polynomial regression
 3. Explore regularization (Ridge, Lasso)
-4. Move on to Day 9: Logistic Regression
-
----
-
-Happy Learning!
