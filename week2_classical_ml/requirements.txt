@@ -1,5 +1,4 @@
 # Week 2: Classical Machine Learning Requirements
-# Linear Regression and Beyond
 
 # Core Data Science Libraries
 numpy>=1.21.0
@@ -13,16 +12,13 @@ seaborn>=0.11.0
 # Machine Learning
 scikit-learn>=1.0.0
 
-# Jupyter Notebook
+# Jupyter Notebook (optional)
 jupyter>=1.0.0
 jupyterlab>=3.0.0
 notebook>=6.4.0
 
 # IPython for interactive computing
 ipython>=7.0.0
-
-# Model Serialization
-pickle5>=0.0.11; python_version < "3.8"
 
 # Optional: Progress bars
 tqdm>=4.62.0
