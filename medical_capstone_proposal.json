@@ -1,0 +1,109 @@
+{
+  "metadata": {
+    "created_date": "2025-12-03T01:31:23.694350",
+    "last_updated": "2025-12-03T01:31:23.694434",
+    "version": "1.0"
+  },
+  "project_info": {
+    "title": "Medical Image Classification for Disease Detection",
+    "author": "ML Student",
+    "description": "\n        Develop a deep learning system for classifying medical images\n        (X-rays/CT scans) to assist radiologists in detecting diseases\n        with explainable AI features.\n        ",
+    "domain": "Computer Vision / Healthcare",
+    "project_type": "Multi-class Image Classification"
+  },
+  "problem_definition": {
+    "problem_statement": "\n        Radiologists face high workloads and diagnostic errors can be costly.\n        AI assistance can help prioritize cases and provide second opinions.\n        ",
+    "business_value": "\n        - Reduce diagnostic time by 40%\n        - Decrease false negatives\n        - Enable remote screening\n        - Support radiologist workflow\n        ",
+    "target_users": [
+      "Radiologists",
+      "Healthcare providers",
+      "Hospitals"
+    ],
+    "success_criteria": [
+      "Sensitivity > 95% for critical findings",
+      "Specificity > 90%",
+      "Explainability with attention maps",
+      "HIPAA-compliant deployment"
+    ]
+  },
+  "dataset": {
+    "name": "ChestX-ray14 + NIH Dataset",
+    "source": "NIH Clinical Center / Kaggle",
+    "size": "112,120 X-ray images",
+    "features": [
+      "pixel_data",
+      "patient_age",
+      "patient_gender",
+      "view_position"
+    ],
+    "target": "disease_labels (14 classes)",
+    "preprocessing_steps": [
+      "1. Image resizing and normalization",
+      "2. Data augmentation (rotation, flip, contrast)",
+      "3. Class balancing (oversampling rare diseases)",
+      "4. Train/val/test split by patient ID"
+    ],
+    "potential_biases": [
+      "Age/gender imbalance",
+      "Equipment variation",
+      "Geographic bias"
+    ]
+  },
+  "methodology": {
+    "approach": "Supervised Learning with Transfer Learning",
+    "algorithms": [
+      "ResNet-50",
+      "DenseNet-121",
+      "EfficientNet-B4"
+    ],
+    "baseline_model": "ResNet-50 pre-trained on ImageNet",
+    "advanced_model": "DenseNet-121 with attention mechanism",
+    "techniques": [
+      "Transfer learning from ImageNet",
+      "Grad-CAM for explainability",
+      "Multi-label classification",
+      "Ensemble of models"
+    ]
+  },
+  "architecture": {},
+  "evaluation": {
+    "primary_metric": "AUC-ROC (per class and mean)",
+    "secondary_metrics": [
+      "Sensitivity",
+      "Specificity",
+      "F1-Score"
+    ],
+    "evaluation_strategy": "Patient-level split, 5-fold CV",
+    "target_performance": {
+      "Mean AUC-ROC": 0.85,
+      "Sensitivity": 0.95,
+      "Specificity": 0.9
+    }
+  },
+  "deployment": {
+    "deployment_platform": "On-premise hospital servers (HIPAA compliant)",
+    "api_type": "REST API with TLS encryption",
+    "monitoring_strategy": "Model performance tracking, drift detection",
+    "scaling_requirements": "Handle 100 images/hour per hospital"
+  },
+  "timeline": {},
+  "risks": [],
+  "deliverables": [
+    {
+      "deliverable": "Trained Models",
+      "description": "Ensemble of CNNs with weights"
+    },
+    {
+      "deliverable": "Explainability Module",
+      "description": "Grad-CAM visualization"
+    },
+    {
+      "deliverable": "API Service",
+      "description": "Secure REST API"
+    },
+    {
+      "deliverable": "Clinical Validation Report",
+      "description": "Performance on test cohort"
+    }
+  ]
+}
